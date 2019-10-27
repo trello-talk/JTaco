@@ -4,13 +4,17 @@ import io.trellotalk.jtaco.auth.TrelloAuth;
 import io.trellotalk.jtaco.user.UserInfoHandler;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.util.Scanner;
 
 public class JsonHandler {
 
-    public static String getJsonContentFromURL(java.net.URL url) throws IOException {
+    public static String getJsonContentFromURL(java.net.URL url, String method) throws IOException {
 
-        Scanner scan = new Scanner(url.openStream());
+        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        urlConnection.setRequestMethod(method);
+
+        Scanner scan = new Scanner(urlConnection.getInputStream());
         String result = "";
         while (scan.hasNext())
             result += scan.nextLine();
@@ -20,6 +24,6 @@ public class JsonHandler {
     }
 
     public static UserInfoHandler getUserInfo(String id, TrelloAuth auth) throws IOException {
-        return new UserInfoHandler(id, auth);
+        return new UserInfoHandler(id, auth, "GET");
     }
 }

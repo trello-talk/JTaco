@@ -14,9 +14,9 @@ public class TacoJson extends JSONObject {
 
     private final java.net.URL REQUEST_URL;
 
-    protected TacoJson(String requestUrl, TrelloAuth auth) throws IOException {
+    protected TacoJson(String requestUrl, TrelloAuth auth, String method) throws IOException {
 
-        super(JsonHandler.getJsonContentFromURL(buildUrl(requestUrl, auth)));
+        super(JsonHandler.getJsonContentFromURL(buildUrl(requestUrl, auth), method));
         REQUEST_URL = buildUrl(requestUrl, auth);
     }
 
