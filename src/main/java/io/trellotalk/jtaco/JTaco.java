@@ -12,7 +12,7 @@ import javax.security.auth.login.LoginException;
 public class JTaco extends ListenerAdapter {
 
     /** Discord bot application token */
-    private static final String TOKEN = "YOUR SECRET TOKEN HERE";
+    private static final String TOKEN = Config.getValue(Config.Key.DISCORD_TOKEN);
 
     /** Text being displayed under the bots name (game being played) */
     private static final String GAME = "Under development";
