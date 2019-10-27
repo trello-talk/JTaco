@@ -36,6 +36,7 @@ public class CommandHandler {
 
         switch(command) {
             case PING: Ping(event); break;
+            case BOARDS: result = getUserBoards(params[0]).toString(); break;
             case UNKNOWN: result = "Unrecognized command"; break;
         }
         if (!result.isBlank())

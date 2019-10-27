@@ -17,4 +17,14 @@ public class UserInfoHandler extends TacoJson {
         super(String.format(REQUEST_URL, userId), auth);
     }
 
+    public java.util.List<String> getBoardList() {
+
+        JSONArray array = getJSONArray("boards");
+        java.util.List<String> boardList = new ArrayList<>();
+        for (Object element : array) {
+            JSONObject obj = (JSONObject) element;
+            boardList.add((String) obj.get("name"));
+        }
+        return boardList;
+    }
 }
