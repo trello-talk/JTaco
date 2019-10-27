@@ -35,12 +35,22 @@ public class CommandHandler {
         String result = "";
 
         switch(command) {
+            case PING: Ping(event); break;
             case UNKNOWN: result = "Unrecognized command"; break;
         }
         if (!result.isBlank())
             channel.sendMessage(result).queue();
     }
 
+    public static void Ping(MessageReceivedEvent event) {
+
+        MessageChannel channel = event.getChannel();
+        long time = System.currentTimeMillis();
+        channel.sendMessage("Pong!") /* => RestAction<Message> */
+                .queue(response /* => Message */ -> {
+                    response.editMessageFormat("Pong: %d ms", System.currentTimeMillis() - time).queue();
+                });
+    }
 
     public static java.util.List<String> getUserBoards(String userId) {
 
