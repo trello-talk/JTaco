@@ -32,18 +32,20 @@ public class Config extends Properties {
     }
 
     private Config() {
-        if (CFG != null) {
+        if (CFG != null)
             throw new IllegalStateException();
-        }
+
+        // @formatter:off
         try { this.initialize(); }
         catch (IOException e) { e.printStackTrace(); }
+        // @formatter:on
     }
 
     private void initialize() throws IOException {
 
         if (FILE.createNewFile()) {
-
             List<String> values = new java.util.ArrayList<>();
+
             for (Key value : Key.values()) {
                 values.add(value.toString() + '=');
             }

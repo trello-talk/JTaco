@@ -10,6 +10,7 @@ public class TrelloAuth {
     public String getApiKey() {
         return API_KEY;
     }
+
     public String getToken() {
         return TOKEN;
     }

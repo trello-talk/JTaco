@@ -28,17 +28,20 @@ public class CommandHandler {
         String[] params = ArrayUtils.remove(elements, 0);
 
         if (params.length < command.minParams) {
-            channel.sendMessage( msg.getAuthor().getAsMention() + " You didn't supply enough arguments!");
+            channel.sendMessage(msg.getAuthor().getAsMention() + " You didn't supply enough arguments!");
             return;
         }
 
         String result = "";
 
-        switch(command) {
+        // @formatter:off
+        switch (command) {
             case PING: Ping(event); break;
             case BOARDS: result = getUserBoards(params[0]).toString(); break;
             case UNKNOWN: result = "Unrecognized command"; break;
         }
+        // @formatter:on
+
         if (!result.isBlank())
             channel.sendMessage(result).queue();
     }
@@ -48,9 +51,9 @@ public class CommandHandler {
         MessageChannel channel = event.getChannel();
         long time = System.currentTimeMillis();
         channel.sendMessage("Pong!") /* => RestAction<Message> */
-                .queue(response /* => Message */ -> {
-                    response.editMessageFormat("Pong: %d ms", System.currentTimeMillis() - time).queue();
-                });
+            .queue(response /* => Message */ -> {
+                response.editMessageFormat("Pong: %d ms", System.currentTimeMillis() - time).queue();
+            });
     }
 
     public static java.util.List<String> getUserBoards(String userId) {

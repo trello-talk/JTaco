@@ -41,7 +41,7 @@ public enum Command {
      *
      * @param command text value that represents the command to find
      * @return {@code Command} instance represented by the given text value or {@link #UNKNOWN}
-     *         if no command that matches the text value has been found or it's not a command.
+     * if no command that matches the text value has been found or it's not a command.
      */
     public static Command find(String command) {
 
@@ -61,6 +61,7 @@ public enum Command {
     public boolean isCaseSensitive() {
         return caseSens;
     }
+
     /**
      * @return text value represented by this command.
      */
