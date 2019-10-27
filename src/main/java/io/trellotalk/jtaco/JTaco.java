@@ -21,3 +21,8 @@ public class JTaco extends ListenerAdapter {
         new JDABuilder(TOKEN).addEventListeners(new JTaco()).setActivity(Activity.playing(GAME)).build();
     }
 
+    @Override
+    public void onMessageReceived(@NotNull MessageReceivedEvent event) {
+        CommandHandler.process(event);
+    }
+}
