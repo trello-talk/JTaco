@@ -1,10 +1,18 @@
 [*]
 charset = utf-8
-end_of_line = lf
+
+# If you want to use native line endings between different operating systems
+# it is better not to set this option and leave that task to the VCS!
+end_of_line = unset
+
 indent_size = 4
-indent_style = space
-insert_final_newline = false
-max_line_length = 120
+indent_style = tab
+insert_final_newline = true
+
+# Read a discussion about width formatting standard on SO:
+# https://stackoverflow.com/questions/276022/line-width-formatting-standard
+max_line_length = 100
+
 tab_width = 4
 ij_continuation_indent_size = 4
 ij_formatter_off_tag = @formatter:off
