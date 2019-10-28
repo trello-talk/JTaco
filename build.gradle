@@ -5,6 +5,10 @@
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds
  */
 
+plugins {
+    id "com.diffplug.gradle.spotless" version "3.25.0"
+}
+
 apply plugin: 'java'
 
 sourceSets {
