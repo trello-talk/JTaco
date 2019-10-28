@@ -11,6 +11,28 @@ plugins {
 
 apply plugin: 'java'
 
+spotless {
+    /*
+     * Read FormatExtension Java documentation here:
+     * https://diffplug.github.io/spotless/javadoc/spotless-plugin-gradle/3.25.0/com/diffplug/gradle/spotless/FormatExtension.html
+     */
+    java {
+        // A sequence of package names
+        importOrder 'java', 'javax', 'org', 'com', 'com.diffplug', ''
+
+        // Removes any unused imports
+        removeUnusedImports()
+
+        // Removes trailing whitespace.
+        trimTrailingWhitespace()
+
+        // Ensures that the files are indented using tabs
+        indentWithTabs()
+
+        // Ensures that files end with a single newline
+        endWithNewline()
+    }
+}
 sourceSets {
     main.java.srcDirs = ['src/main/java']
     main.resources.srcDirs = ['src/main/resources']
