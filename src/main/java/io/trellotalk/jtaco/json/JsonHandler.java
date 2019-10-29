@@ -9,10 +9,10 @@ import java.util.Scanner;
 
 public class JsonHandler {
 
-    public static String getJsonContentFromURL(java.net.URL url, String method) throws IOException {
+    public static String getJsonContentFromURL(java.net.URL url, HttpMethod method) throws IOException {
 
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-        urlConnection.setRequestMethod(method);
+        urlConnection.setRequestMethod(method.toString());
 
         Scanner scan = new Scanner(urlConnection.getInputStream());
         String result = "";
@@ -24,6 +24,6 @@ public class JsonHandler {
     }
 
     public static UserInfoHandler getUserInfo(String id, TrelloAuth auth) throws IOException {
-        return new UserInfoHandler(id, auth, "GET");
+        return new UserInfoHandler(id, auth, HttpMethod.GET);
     }
 }
