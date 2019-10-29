@@ -28,7 +28,7 @@ public class CommandHandler {
         String[] params = ArrayUtils.remove(elements, 0);
 
         if (params.length < command.minParams) {
-            channel.sendMessage( msg.getAuthor().getAsMention() + " You didn't supply enough arguments!");
+            channel.sendMessage( msg.getAuthor().getAsMention() + " You didn't supply enough arguments!").queue();
             return;
         }
 
