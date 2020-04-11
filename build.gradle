@@ -21,7 +21,7 @@ targetCompatibility = JavaVersion.VERSION_11
 sourceCompatibility = JavaVersion.VERSION_11
 
 dependencies {
-    implementation 'net.dv8tion:JDA:4.0.0_54'
+    implementation 'net.dv8tion:JDA:4.1.1_101'
 
     // https://mvnrepository.com/artifact/org.json/json
     compile group: 'org.json', name: 'json', version: '20190722'
