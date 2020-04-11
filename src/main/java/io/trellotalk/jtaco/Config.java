@@ -32,7 +32,8 @@ public class Config extends Properties {
     }
 
     public enum General {
-        BOT_PREFIX("prefix");
+        BOT_PREFIX("prefix"),
+        BOT_PRESENCE("bot_presence");
 
         private final String value;
 
@@ -61,12 +62,28 @@ public class Config extends Properties {
         if (FILE.createNewFile()) {
             List<String> values = new java.util.ArrayList<>();
 
+            values.add("#Here, you will put your Trello API Key, Trello OAUTH Token" +
+                "(The both can be get in https://trello.com/app-key)");
+            values.add("#and your BOT Secret Token (From Discord. Get this key in https://discord.com/developers)");
+
             for (Key value : Key.values()) {
                 values.add(value.toString() + '=');
             }
 
+            values.add("");
+
             for (General value : General.values()) {
-                values.add(value.toString() + '=');
+                if(value.toString() == "bot_presence"){
+                    values.add("#This is the \"Playing...\" default. You can change this here. (Default = Under development)");
+                    values.add(value.toString() + '=' + "Under development");
+                    values.add("");
+                } else if(value.toString() == "prefix") {
+                    values.add("#This is the bot prefix. (Default = T!)");
+                    values.add(value.toString() + '=' + "T!");
+                    values.add("");
+                } else {
+                    values.add(value.toString() + '=');
+                }
             }
             FileUtils.writeLines(FILE, values);
             throw new IllegalStateException("No configuration file found, a template file has been created.");

@@ -15,7 +15,7 @@ public class JTaco extends ListenerAdapter {
     private static final String TOKEN = Config.getValue(Config.Key.DISCORD_TOKEN);
 
     /** Text being displayed under the bots name (game being played) */
-    private static final String GAME = "Under development";
+    private static final String GAME = Config.getValue(Config.General.BOT_PRESENCE);
 
     public static void main(String[] args) throws LoginException {
         new JDABuilder(TOKEN).addEventListeners(new JTaco()).setActivity(Activity.playing(GAME)).build();
