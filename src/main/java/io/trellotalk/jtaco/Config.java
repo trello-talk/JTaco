@@ -31,6 +31,21 @@ public class Config extends Properties {
         }
     }
 
+    public enum General {
+        BOT_PREFIX("prefix");
+
+        private final String value;
+
+        General(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
+    }
+
     private Config() {
         if (CFG != null)
             throw new IllegalStateException();
@@ -49,6 +64,10 @@ public class Config extends Properties {
             for (Key value : Key.values()) {
                 values.add(value.toString() + '=');
             }
+
+            for (General value : General.values()) {
+                values.add(value.toString() + '=');
+            }
             FileUtils.writeLines(FILE, values);
             throw new IllegalStateException("No configuration file found, a template file has been created.");
         }
@@ -57,5 +76,9 @@ public class Config extends Properties {
 
     public static String getValue(Key key) {
         return (String) CFG.get(key.value);
+    }
+
+    public static String getValue(General general) {
+        return (String) CFG.get(general.value);
     }
 }

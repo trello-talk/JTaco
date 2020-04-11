@@ -1,5 +1,7 @@
 package io.trellotalk.jtaco.cmd;
 
+import io.trellotalk.jtaco.Config;
+
 public enum Command {
 
     /** Used to test server status and latency */
@@ -16,7 +18,7 @@ public enum Command {
      * Command prefix to be used to recognize commands.
      * Channel messages that start with this {@code String} will be considered commands
      */
-    public static final String PREFIX = "T!";
+    public static final String PREFIX = Config.getValue(Config.General.BOT_PREFIX);
 
     final String value;
     final int minParams;
